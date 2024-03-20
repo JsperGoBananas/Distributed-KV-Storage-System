@@ -5,9 +5,10 @@ Before you run the program change the proxy_server in start_server.sh and client
 
 In order to Run the program
 Run 
-'''start_proxy.sh '''
-'''start_server.sh '''
-'''client.sh '''
-Respectively
-You can run multiple servers in different machine
+```start_proxy.sh ``` first,
+then run ```start_server.sh ```,you can run multiple servers in different machines
+
+To use the user interface, run
+```client.sh ```, also you can run different client on different machines
+
 And you should be good to go
