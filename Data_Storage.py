@@ -4,13 +4,10 @@ import json
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 from xmlrpc.server import SimpleXMLRPCServer
 import xmlrpc.client as xmlrpclib
-# 这里模拟数据库
 database = {}
-# 数据持久化
 filename = "database.json"
 BASE_PORT = 20000
 PROXY_PORT = 21000
-# 尝试打开文件进行读取
 try:
     with open(filename, "r") as file:
         database = json.load(file)
@@ -21,7 +18,6 @@ class Server:
     def __init__(self,proxy):
         self.proxy_server = xmlrpclib.ServerProxy(f'http://{proxy}:{PROXY_PORT}')
     def put(self, key, value):
-        # 存储键值对到数据库并更新缓存
         database[key] = value
         with open("database.json","w") as f:
             json.dump(database, f, ensure_ascii=False, default=lambda o: o.__dict__)
@@ -40,14 +36,12 @@ class Server:
         return False
 
     def list(self):
-        # 返回整个数据库
         return database
 
 
     def ping(self):
         return 1
 def run_server(local,proxy):
-    # 启动和运行 XML-RPC 服务器
     server = SimpleXMLRPCServer((local, BASE_PORT), requestHandler=SimpleXMLRPCRequestHandler, allow_none=True)
     print(server)
     server.register_instance(Server(proxy))

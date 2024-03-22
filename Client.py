@@ -12,11 +12,11 @@ class Client(object):
             while True:
                 command = input(f"Please enter your command (PUT/GET/DELETE/LIST/EXIT)>> ").upper()
                 if command == 'HELP':
-                    self.print_help()  # 打印命令帮助
+                    self.print_help()
                 else:
                     if command == 'EXIT':
                         break
-                    self.send_command_to_server(command)  # 向服务器发送命令
+                    self.send_command_to_server(command)
 
         except KeyboardInterrupt:
             pass
@@ -35,9 +35,9 @@ class Client(object):
         )
 
     def send_command_to_server(self, command):
-        msg = getattr(self.proxy, 'function')(command)  # 向服务器发送命令并获取返回信息
+        msg = getattr(self.proxy, 'function')(command)
         if msg is not None:
-            print(msg)  # 打印服务器返回信息
+            print(msg)
 
 
 if __name__ == '__main__':
@@ -57,4 +57,4 @@ if __name__ == '__main__':
     print('Welcome')
     print("Enter 'help' to get command list。")
     print('-------------------------------------------')
-    client.handle_user_command()  # 处理用户命令
+    client.handle_user_command()

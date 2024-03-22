@@ -17,9 +17,8 @@ class ProxyServer:
     current_index = 0
     servers = []
 
-    # 处理客户端发来的命令
     def function(self, clause):
-        clause = clause.strip().split()  # 解析命令
+        clause = clause.strip().split() 
         lens = len(clause)
 
         if lens < 1:
@@ -27,16 +26,13 @@ class ProxyServer:
 
         command = clause[0]
 
-        # 检查命令类型
         if command in ['PUT', 'GET', 'DELETE', 'LIST', 'LOG', 'EXIT']:
-            # 获取对应的方法
                 server_function = getattr(self, command.lower())
                 return server_function(clause)
         else:
             return "Wrong input, use 'help' to get more information."
 
 
-    # 实现PUT方法
     def put(self, clause):
         if len(clause) != 3:
             return 'Wrong format. Use PUT key value'
@@ -61,7 +57,6 @@ class ProxyServer:
 
         return f"Fail to add/update {key}，value {value}"
 
-    # 实现GET方法
     def get(self, clause):
         if len(clause) != 2:
             return 'Wrong input format, use: GET key'
@@ -78,7 +73,6 @@ class ProxyServer:
             value = None
         return f"key {key}'s value is ：{value if value is not None else '[value not found]'}"
 
-    # 实现LIST方法
     def list(self, clause):
         if len(clause) != 1:
             return 'Wrong input format, use: LIST'
@@ -93,7 +87,6 @@ class ProxyServer:
                     self.remove(proxy)
         return list
 
-    # 实现DELETE方法
     def delete(self, clause):
         if len(clause) != 2:
             return 'Wrong input format, use : DELETE key'
