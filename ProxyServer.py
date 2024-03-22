@@ -18,7 +18,7 @@ class ProxyServer:
     servers = []
 
     def function(self, clause):
-        clause = clause.strip().split() 
+        clause = clause.strip().split()
         lens = len(clause)
 
         if lens < 1:
@@ -200,7 +200,7 @@ class ProxyServer:
             return True
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Generate random Traveling Sales Person problems.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("-local", "--local", help="Local Ip address", required=True, type=str)
     args = parser.parse_args()
     local = args.local

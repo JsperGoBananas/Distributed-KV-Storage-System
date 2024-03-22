@@ -55,7 +55,7 @@ def register(local,proxy):
     proxy_server.register(local,database)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate random Traveling Sales Person problems.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("-local", "--local", help="Local Ip address", required=True, type=str)
     parser.add_argument("-proxy", "--proxy", help="Proxy Ip address", required=True, type=str)
 

@@ -41,7 +41,7 @@ class Client(object):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Generate random Traveling Sales Person problems.")
+    parser = argparse.ArgumentParser()
     parser.add_argument("-proxy", "--proxy", help="Proxy Ip address", required=True, type=str)
 
     args = parser.parse_args()
